@@ -35,7 +35,7 @@ public class FirstPersonController : MonoBehaviour
 
     public bool isSprinting = false;
     public bool isJumping = false;
-    public bool doubleActive = true;
+    private bool doubleActive = true;
 
     private Vector2 moveValue;
     private Vector2 rotateValue;
@@ -77,8 +77,8 @@ public class FirstPersonController : MonoBehaviour
     }
 
     private void ProcessMove()
-    { 
-        if (sprintAction.IsPressed() && isSprinting == false)
+    {
+        if (sprintAction.IsPressed())
         {
             FirstPersonCamera.fieldOfView = Mathf.Lerp(FirstPersonCamera.fieldOfView, maxPov, 10f * Time.deltaTime);
             isSprinting = true;
@@ -86,9 +86,9 @@ public class FirstPersonController : MonoBehaviour
         }
         else if (!sprintAction.IsPressed() && isSprinting == true)
         {
-            FirstPersonCamera.fieldOfView = Mathf.Lerp(FirstPersonCamera.fieldOfView, basePov, 1.5f * Time.deltaTime); 
+            FirstPersonCamera.fieldOfView = Mathf.Lerp(FirstPersonCamera.fieldOfView, basePov, 1.5f * Time.deltaTime);
             moveSpeed = baseSpeed;
-            if(FirstPersonCamera.fieldOfView <= 60)
+            if (FirstPersonCamera.fieldOfView <= 60)
             {
                 isSprinting = false;
             }
@@ -112,7 +112,7 @@ public class FirstPersonController : MonoBehaviour
         float rotationY = rotateValue.x * sensitivityX;
 
         //Sets moveValue to read the inputs and translates it into an x and y value in a Vector2
-        rotateValue = rotateAction.ReadValue<Vector2>() * Time.deltaTime;
+        rotateValue = rotateAction.ReadValue<Vector2>() * Time.deltaTime * 800;
 
         currentRotationAngle = new Vector3(currentRotationAngle.x - rotationX, currentRotationAngle.y + rotationY, 0);
 
@@ -123,7 +123,7 @@ public class FirstPersonController : MonoBehaviour
 
     private void ProcessVerticalMovement()
     {
-        if(characterController.isGrounded) 
+        if (characterController.isGrounded)
         {
             doubleActive = true;
             isJumping = false;
@@ -146,5 +146,12 @@ public class FirstPersonController : MonoBehaviour
         vertMove += Physics.gravity.y * Time.deltaTime;
 
         Debug.Log(characterController.isGrounded);
+    }
+
+    //Triggers only in the unity editor
+    void OnDrawGizmos()
+    {
+        Gizmos.color = new Vector4(0, 1, 1, 0.5f);
+        Gizmos.DrawSphere(transform.position, 0.5f);
     }
 }
