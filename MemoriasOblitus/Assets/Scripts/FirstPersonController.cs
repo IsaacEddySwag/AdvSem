@@ -11,10 +11,10 @@ using UnityEngine.InputSystem.LowLevel;
 
 public class FirstPersonController : MonoBehaviour
 {
-    public float moveSpeed = 5f;
-    public float maxSpeed = 12f;
-    public float baseSpeed = 5f;
-    public float maxJump = 0f;
+    public float moveSpeed = 4f;
+    public float maxSpeed = 8f;
+    public float baseSpeed = 4f;
+    public float maxJump = 1f;
     private float vertMove = 0f;
 
     public float basePov = 60;
@@ -80,18 +80,37 @@ public class FirstPersonController : MonoBehaviour
     {
         if (sprintAction.IsPressed())
         {
-            FirstPersonCamera.fieldOfView = Mathf.Lerp(FirstPersonCamera.fieldOfView, maxPov, 10f * Time.deltaTime);
+            FirstPersonCamera.fieldOfView = Mathf.Lerp(FirstPersonCamera.fieldOfView, maxPov, 6f * Time.deltaTime);
             isSprinting = true;
-            moveSpeed = maxSpeed;
+            moveSpeed = Mathf.Lerp(moveSpeed, maxSpeed, 6f * Time.deltaTime);
+
         }
         else if (!sprintAction.IsPressed() && isSprinting == true)
         {
-            FirstPersonCamera.fieldOfView = Mathf.Lerp(FirstPersonCamera.fieldOfView, basePov, 1.5f * Time.deltaTime);
-            moveSpeed = baseSpeed;
-            if (FirstPersonCamera.fieldOfView <= 60)
+            FirstPersonCamera.fieldOfView = Mathf.Lerp(FirstPersonCamera.fieldOfView, basePov, 6f * Time.deltaTime);
+            moveSpeed = Mathf.Lerp(moveSpeed, baseSpeed, 6f * Time.deltaTime);
+            if (FirstPersonCamera.fieldOfView <= basePov && moveSpeed <= baseSpeed)
             {
                 isSprinting = false;
             }
+        }
+
+        if(FirstPersonCamera.fieldOfView >= maxPov - 0.1)
+        {
+            FirstPersonCamera.fieldOfView = 80;
+        }
+        else if(FirstPersonCamera.fieldOfView <= basePov + 0.1)
+        {
+            FirstPersonCamera.fieldOfView = 60;
+        }
+
+        if(moveSpeed >= maxSpeed - 0.1)
+        {
+            moveSpeed = maxSpeed;
+        }
+        else if(moveSpeed <= baseSpeed + 0.1)
+        {
+            moveSpeed = baseSpeed;
         }
 
         FirstPersonCamera.fieldOfView = Mathf.Clamp(FirstPersonCamera.fieldOfView, basePov, maxPov);
@@ -112,7 +131,7 @@ public class FirstPersonController : MonoBehaviour
         float rotationY = rotateValue.x * sensitivityX;
 
         //Sets moveValue to read the inputs and translates it into an x and y value in a Vector2
-        rotateValue = rotateAction.ReadValue<Vector2>() * Time.deltaTime * 800;
+        rotateValue = rotateAction.ReadValue<Vector2>() * Time.deltaTime;
 
         currentRotationAngle = new Vector3(currentRotationAngle.x - rotationX, currentRotationAngle.y + rotationY, 0);
 
@@ -144,14 +163,5 @@ public class FirstPersonController : MonoBehaviour
         }
 
         vertMove += Physics.gravity.y * Time.deltaTime;
-
-        Debug.Log(characterController.isGrounded);
-    }
-
-    //Triggers only in the unity editor
-    void OnDrawGizmos()
-    {
-        Gizmos.color = new Vector4(0, 1, 1, 0.5f);
-        Gizmos.DrawSphere(transform.position, 0.5f);
     }
 }

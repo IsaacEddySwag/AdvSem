@@ -359,9 +359,13 @@
 -analyzer:"C:/Program Files/Unity/Hub/Editor/2022.3.9f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.Properties.SourceGenerator.dll"
 -analyzer:"C:/Program Files/Unity/Hub/Editor/2022.3.9f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.SourceGenerators.dll"
 "Assets/Scripts/ChangeLightColor.cs"
+"Assets/Scripts/CutsceneCameraController.cs"
 "Assets/Scripts/FirstPersonController.cs"
 "Assets/Scripts/GameManager.cs"
-"Assets/Scripts/UnityEventExample.cs"
+"Assets/Scripts/InteractEventManager.cs"
+"Assets/Scripts/LookAt.cs"
+"Assets/Scripts/RayCastInteract.cs"
+"Assets/Scripts/UIAnimationManager.cs"
 -langversion:9.0
 
 /deterministic
