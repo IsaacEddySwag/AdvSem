@@ -1,38 +1,59 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using Cinemachine;
+using UnityEngine.EventSystems;
 
 public class CutsceneCameraController : MonoBehaviour
 {
-    public CinemachineVirtualCamera virtualCamera;
+    public Camera mainCamera;
+    private Transform originalPosition;
+    private Transform targetObject;
+    public float moveSpeed = 5.0f;
 
-    public float waitTime = 2f;
+    private bool isMoving = false;
 
     private void Start()
     {
-        // Disable the virtual camera at the beginning
-        virtualCamera.gameObject.SetActive(false);
+        mainCamera = Camera.main;
+        originalPosition = mainCamera.transform;
     }
 
-    public void LookAtObjectAndReturn(GameObject objectLook)
+    public void LookAtTarget(GameObject objectToLook)
     {
-        // Enable the virtual camera and set the Look At target
-        virtualCamera.gameObject.SetActive(true);
-        virtualCamera.LookAt = objectLook.transform;
-
-        // You can also set other properties like the Field of View here
-
-        // To return to the original position, you might use a coroutine or a timer
-        StartCoroutine(ReturnToOriginalPosition());
+        if(!isMoving)
+        {
+            StartCoroutine(MoveCameraToTarget(objectToLook));
+        }
     }
-
-    private IEnumerator ReturnToOriginalPosition()
+    private IEnumerator MoveCameraToTarget(GameObject lookAtObj)
     {
-        yield return new WaitForSeconds(waitTime); // Adjust the time as needed
+        targetObject = lookAtObj.transform;
 
-        // Reset the Look At target and disable the virtual camera
-        virtualCamera.LookAt = null;
-        virtualCamera.gameObject.SetActive(false);
+         isMoving = true;
+
+        Vector3 cameraToTargetDirection = (targetObject.position - mainCamera.transform.position).normalized;
+
+        Quaternion targetRotation = Quaternion.LookRotation(cameraToTargetDirection);
+        float startTime = Time.time;
+
+        while (Time.time - startTime < 1.0f) 
+        {
+            float t = (Time.time - startTime) * moveSpeed;
+            mainCamera.transform.rotation = Quaternion.Slerp(mainCamera.transform.rotation, targetRotation, t);
+            yield return null;
+        }
+
+        Vector3 newPosition = targetObject.position - cameraToTargetDirection * 5.0f; 
+
+        startTime = Time.time;
+
+        while (Time.time - startTime < 1.0f) 
+        {
+            float t = (Time.time - startTime) * moveSpeed;
+            mainCamera.transform.position = Vector3.Lerp(mainCamera.transform.position, newPosition, t);
+            yield return null;
+        }
+
+        isMoving = false;
     }
 }
