@@ -326,7 +326,7 @@ GameObject:
   - component: {fileID: 347537206}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -413,14 +413,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 347537205}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.9884287, z: -0, w: -0.15168627}
-  m_LocalPosition: {x: 0, y: 13.200001, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 13, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 963194228}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: -197.449, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &366104169
 GameObject:
   m_ObjectHideFlags: 0
@@ -586,6 +586,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 0}
+  player: {fileID: 0}
   moveSpeed: 5
 --- !u!1 &487846494
 GameObject:
@@ -979,8 +980,8 @@ Transform:
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
   m_LocalRotation: {x: 0.14111662, y: 0.62211585, z: -0.11538399, w: 0.76140964}
-  m_LocalPosition: {x: -3.7073026, y: 0.7588062, z: -3.7578492}
-  m_LocalScale: {x: 1, y: 0.73996997, z: 1}
+  m_LocalPosition: {x: 0.11, y: 0.3000002, z: 0.02}
+  m_LocalScale: {x: 1, y: 0.73997, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 347537209}
@@ -998,7 +999,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 963194227}
-  moveSpeed: 5
+  player: {fileID: 347537205}
+  moveSpeed: 20
 --- !u!1 &1276660710
 GameObject:
   m_ObjectHideFlags: 0
@@ -1267,13 +1269,13 @@ MonoBehaviour:
   interactEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 963194229}
-        m_TargetAssemblyTypeName: CutsceneCameraController, Assembly-CSharp
-        m_MethodName: LookAtTarget
-        m_Mode: 2
+      - m_Target: {fileID: 963194225}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 0
         m_Arguments:
-          m_ObjectArgument: {fileID: 487846494}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
