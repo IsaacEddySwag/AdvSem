@@ -37,6 +37,9 @@ public class FirstPersonController : MonoBehaviour
     public bool isJumping = false;
     private bool doubleActive = true;
 
+    public bool canMovePlayer;
+    public bool canMoveCamera;
+
     private Vector2 moveValue;
     private Vector2 rotateValue;
 
@@ -72,6 +75,9 @@ public class FirstPersonController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        canMovePlayer = GameObject.Find("GameManager").GetComponent<GameManager>().cameraNil;
+        canMoveCamera = GameObject.Find("GameManager").GetComponent<GameManager>().movmentNil;
+
         ProcessMove();
         ProcessCamera();
     }
@@ -113,16 +119,19 @@ public class FirstPersonController : MonoBehaviour
             moveSpeed = baseSpeed;
         }
 
-        FirstPersonCamera.fieldOfView = Mathf.Clamp(FirstPersonCamera.fieldOfView, basePov, maxPov);
+        if(canMovePlayer == false) 
+        {
+            FirstPersonCamera.fieldOfView = Mathf.Clamp(FirstPersonCamera.fieldOfView, basePov, maxPov);
 
-        moveValue = moveAction.ReadValue<Vector2>() * moveSpeed * Time.deltaTime;
-        Vector3 moveDirection = FirstPersonCamera.transform.forward * moveValue.y + FirstPersonCamera.transform.right * moveValue.x;
+            moveValue = moveAction.ReadValue<Vector2>() * moveSpeed * Time.deltaTime;
+            Vector3 moveDirection = FirstPersonCamera.transform.forward * moveValue.y + FirstPersonCamera.transform.right * moveValue.x;
 
-        ProcessVerticalMovement();
+            ProcessVerticalMovement();
 
-        moveDirection.y = vertMove * Time.deltaTime;
+            moveDirection.y = vertMove * Time.deltaTime;
 
-        characterController.Move(moveDirection);
+            characterController.Move(moveDirection);
+        }
     }
 
     private void ProcessCamera()
@@ -131,13 +140,16 @@ public class FirstPersonController : MonoBehaviour
         float rotationY = rotateValue.x * sensitivityX;
 
         //Sets moveValue to read the inputs and translates it into an x and y value in a Vector2
-        rotateValue = rotateAction.ReadValue<Vector2>() * Time.deltaTime;
+        if(canMoveCamera == false) 
+        {
+            rotateValue = rotateAction.ReadValue<Vector2>() * Time.deltaTime;
 
-        currentRotationAngle = new Vector3(currentRotationAngle.x - rotationX, currentRotationAngle.y + rotationY, 0);
+            currentRotationAngle = new Vector3(currentRotationAngle.x - rotationX, currentRotationAngle.y + rotationY, 0);
 
-        currentRotationAngle = new Vector3(Mathf.Clamp(currentRotationAngle.x, -85, 85), currentRotationAngle.y, currentRotationAngle.z);
+            currentRotationAngle = new Vector3(Mathf.Clamp(currentRotationAngle.x, -85, 85), currentRotationAngle.y, currentRotationAngle.z);
 
-        FirstPersonCamera.transform.rotation = Quaternion.Euler(currentRotationAngle);
+            FirstPersonCamera.transform.rotation = Quaternion.Euler(currentRotationAngle);
+        }
     }
 
     private void ProcessVerticalMovement()
@@ -155,7 +167,7 @@ public class FirstPersonController : MonoBehaviour
 
         bool jumpButtonDown = jumpAction.triggered && jumpAction.ReadValue<float>() > 0;
 
-        if (jumpButtonDown && (characterController.isGrounded || doubleActive))
+        if (jumpButtonDown && (characterController.isGrounded || doubleActive) && canMovePlayer == false)
         {
             vertMove += Mathf.Sqrt(maxJump * -2.0f * Physics.gravity.y);
             doubleActive = false;

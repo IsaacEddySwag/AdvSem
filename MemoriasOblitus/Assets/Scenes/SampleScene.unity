@@ -588,6 +588,11 @@ MonoBehaviour:
   mainCamera: {fileID: 0}
   player: {fileID: 0}
   moveSpeed: 5
+  objectToLook: {fileID: 0}
+  lookAtMarker: {fileID: 0}
+  cameraSpeed: 0
+  waitTime: 0
+  delayTime: 0
 --- !u!1 &487846494
 GameObject:
   m_ObjectHideFlags: 0
@@ -653,7 +658,7 @@ Transform:
   m_GameObject: {fileID: 487846494}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.14, y: 11.64, z: 3.752}
+  m_LocalPosition: {x: -3.49, y: 16.03, z: 3.48}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -685,7 +690,7 @@ Transform:
   m_GameObject: {fileID: 633454537}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -5.6500006, y: -4.3900003, z: 0.27200007}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1001,6 +1006,11 @@ MonoBehaviour:
   mainCamera: {fileID: 963194227}
   player: {fileID: 347537205}
   moveSpeed: 20
+  objectToLook: {fileID: 0}
+  lookAtMarker: {fileID: 0}
+  cameraSpeed: 0
+  waitTime: 0
+  delayTime: 0
 --- !u!1 &1276660710
 GameObject:
   m_ObjectHideFlags: 0
@@ -1269,15 +1279,75 @@ MonoBehaviour:
   interactEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 963194225}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 0
+      - m_Target: {fileID: 963194229}
+        m_TargetAssemblyTypeName: CutsceneCameraController, Assembly-CSharp
+        m_MethodName: SetCameraSpeed
+        m_Mode: 4
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 1
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 963194229}
+        m_TargetAssemblyTypeName: CutsceneCameraController, Assembly-CSharp
+        m_MethodName: SetDelay
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 1
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 963194229}
+        m_TargetAssemblyTypeName: CutsceneCameraController, Assembly-CSharp
+        m_MethodName: SetObjectMarker
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 487846494}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 963194229}
+        m_TargetAssemblyTypeName: CutsceneCameraController, Assembly-CSharp
+        m_MethodName: SetObjectToLook
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 633454537}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 963194229}
+        m_TargetAssemblyTypeName: CutsceneCameraController, Assembly-CSharp
+        m_MethodName: SetWaitTime
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 4
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 963194229}
+        m_TargetAssemblyTypeName: CutsceneCameraController, Assembly-CSharp
+        m_MethodName: LookAtTarget
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 4
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
