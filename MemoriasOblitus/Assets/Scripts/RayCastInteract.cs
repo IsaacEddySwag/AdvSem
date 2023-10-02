@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,7 +9,7 @@ public class RayCastInteract : MonoBehaviour
     public InputActionAsset characterInputActions;
     public InputAction interactAction;
 
-    public Camera playerCamera;
+    public CinemachineFreeLook playerCamera;
     public float distance = 2f;
 
     private void Awake()

@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -31,7 +32,7 @@ public class FirstPersonController : MonoBehaviour
     private InputAction jumpAction;
 
     private CharacterController characterController;
-    public Camera FirstPersonCamera;
+    public CinemachineFreeLook FirstPersonCamera;
 
     public bool isSprinting = false;
     public bool isJumping = false;
@@ -70,6 +71,8 @@ public class FirstPersonController : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        FirstPersonCamera.m_CommonLens = true;
     }
 
     // Update is called once per frame
@@ -86,28 +89,28 @@ public class FirstPersonController : MonoBehaviour
     {
         if (sprintAction.IsPressed())
         {
-            FirstPersonCamera.fieldOfView = Mathf.Lerp(FirstPersonCamera.fieldOfView, maxPov, 6f * Time.deltaTime);
+            FirstPersonCamera.m_Lens.FieldOfView = Mathf.Lerp(FirstPersonCamera.m_Lens.FieldOfView, maxPov, 6f * Time.deltaTime);
             isSprinting = true;
             moveSpeed = Mathf.Lerp(moveSpeed, maxSpeed, 6f * Time.deltaTime);
 
         }
         else if (!sprintAction.IsPressed() && isSprinting == true)
         {
-            FirstPersonCamera.fieldOfView = Mathf.Lerp(FirstPersonCamera.fieldOfView, basePov, 6f * Time.deltaTime);
+            FirstPersonCamera.m_Lens.FieldOfView = Mathf.Lerp(FirstPersonCamera.m_Lens.FieldOfView, basePov, 6f * Time.deltaTime);
             moveSpeed = Mathf.Lerp(moveSpeed, baseSpeed, 6f * Time.deltaTime);
-            if (FirstPersonCamera.fieldOfView <= basePov && moveSpeed <= baseSpeed)
+            if (FirstPersonCamera.m_Lens.FieldOfView <= basePov && moveSpeed <= baseSpeed)
             {
                 isSprinting = false;
             }
         }
 
-        if(FirstPersonCamera.fieldOfView >= maxPov - 0.1)
+        if(FirstPersonCamera.m_Lens.FieldOfView >= maxPov - 0.1)
         {
-            FirstPersonCamera.fieldOfView = 80;
+            FirstPersonCamera.m_Lens.FieldOfView = 80;
         }
-        else if(FirstPersonCamera.fieldOfView <= basePov + 0.1)
+        else if(FirstPersonCamera.m_Lens.FieldOfView <= basePov + 0.1)
         {
-            FirstPersonCamera.fieldOfView = 60;
+            FirstPersonCamera.m_Lens.FieldOfView = 60;
         }
 
         if(moveSpeed >= maxSpeed - 0.1)
@@ -121,7 +124,7 @@ public class FirstPersonController : MonoBehaviour
 
         if(canMovePlayer == false) 
         {
-            FirstPersonCamera.fieldOfView = Mathf.Clamp(FirstPersonCamera.fieldOfView, basePov, maxPov);
+            FirstPersonCamera.m_Lens.FieldOfView = Mathf.Clamp(FirstPersonCamera.m_Lens.FieldOfView, basePov, maxPov);
 
             moveValue = moveAction.ReadValue<Vector2>() * moveSpeed * Time.deltaTime;
             Vector3 moveDirection = FirstPersonCamera.transform.forward * moveValue.y + FirstPersonCamera.transform.right * moveValue.x;
