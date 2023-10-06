@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     public bool cameraNil = false;
     public bool movmentNil = false;
 
+    public float drinkFill = 0f;
+
     private void Awake()
     {
         if(Instance == null)
@@ -30,5 +32,10 @@ public class GameManager : MonoBehaviour
         {
             Instance = null;
         }
+    }
+
+    public void fillDrink()
+    {
+        drinkFill += 1;
     }
 }
