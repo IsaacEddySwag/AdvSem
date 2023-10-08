@@ -39,6 +39,7 @@ public class RayCastInteract : MonoBehaviour
             if (interactInputPressed)
             {
                 interactionHitInfo.transform.SendMessage("onPlayerInteract", SendMessageOptions.DontRequireReceiver);
+                Debug.Log($"HIT: {interactionHitInfo.transform.name}");
             }
         }
     }
