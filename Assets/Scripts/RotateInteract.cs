@@ -24,6 +24,7 @@ public class RotateInteract : MonoBehaviour
 
             if (Quaternion.Dot(transform.rotation, targetRotation) > 0.99f) // Difference threshold - gusg21
             {
+                transform.rotation = targetRotation;
                 rotateNow = false;
             }
         }
@@ -33,7 +34,10 @@ public class RotateInteract : MonoBehaviour
 
     public void Rotate45()
     {
-        rotateNow = true;
-        targetRotation = Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y + 45, transform.eulerAngles.z);
+        if(!rotateNow) 
+        {
+            rotateNow = true;
+            targetRotation = Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y + 45, transform.eulerAngles.z);
+        }
     }
 }
