@@ -1,37 +1,31 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ExplosionUp : MonoBehaviour
 {
-    public float launchForce = 10f; // The force with which the object is launched
-    public float gravity = -9.8f;    // Gravity pulling the object down
+    public float upwardForce = 2f;  
+    public float propulsionDuration = 4f;
+    public float delayDuration = 4f;
 
     private Rigidbody rb;
 
     void Start()
     {
-        // Get the Rigidbody component attached to the GameObject
         rb = GetComponent<Rigidbody>();
-
-        // Call the LaunchObject method repeatedly using InvokeRepeating
-        InvokeRepeating("LaunchObject", 0f, waitTime);
+        PropelUpwards();
     }
 
-    void LaunchObject()
+    void PropelUpwards()
     {
-        // Reset the object's position and velocity
-        rb.position = new Vector3(0f, 0f, 0f);
-        rb.velocity = Vector3.zero;
+        rb.useGravity = false;
 
-        // Apply a force to launch the object into the air
-        rb.AddForce(Vector3.up * launchForce, ForceMode.Impulse);
+        rb.AddForce(Vector3.up * upwardForce, ForceMode.Impulse);
+        Invoke("FallDown", propulsionDuration);
     }
 
-    void Update()
+    void FallDown()
     {
-        // Apply gravity to make the object fall back down
-        rb.AddForce(Vector3.up * gravity, ForceMode.Acceleration);
+        rb.useGravity = true;
+        Invoke("PropelUpwards", delayDuration);
     }
-
 }
+

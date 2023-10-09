@@ -3559,10 +3559,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60d8a245d39449c44aa4b1fbadd851b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delayTime: 0
-  boomSpeed: 0
-  hasGunpowder: 1
-  isExploding: 0
+  initialForce: 10
+  gravity: 9.8
+  launchDuration: 3
+  waitTime: 4
 --- !u!1 &975281628
 GameObject:
   m_ObjectHideFlags: 0
