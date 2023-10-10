@@ -3,7 +3,7 @@ using UnityEngine;
 public class ExplosionUp : MonoBehaviour
 {
     public float upwardForce = 2f;  
-    public float propulsionDuration = 4f;
+    public float propulsionDuration = 2f;
     public float delayDuration = 4f;
 
     private Rigidbody rb;

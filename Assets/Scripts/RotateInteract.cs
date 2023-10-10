@@ -40,4 +40,12 @@ public class RotateInteract : MonoBehaviour
             targetRotation = Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y + 45, transform.eulerAngles.z);
         }
     }
+    public void RotateMinus45()
+    {
+        if (!rotateNow)
+        {
+            rotateNow = true;
+            targetRotation = Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y - 45, transform.eulerAngles.z);
+        }
+    }
 }

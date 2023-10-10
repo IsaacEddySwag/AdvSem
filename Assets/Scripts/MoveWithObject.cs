@@ -1,26 +1,34 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class MoveWithObject : MonoBehaviour
 {
     [SerializeField] private GameObject player;
-    private Transform playerTransform;
-    private Rigidbody objectRigidbody;
+    [SerializeField] private GameObject movingPlatform;
+    private Rigidbody rb;
+
+    public bool playerIn = false;
 
     void Start()
     {
-        // Get the Rigidbody component of the moving object
-        objectRigidbody = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>();
     }
 
-    void OnCollisionStay(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        playerTransform = player.transform;
-        // Check if the player is colliding with the moving object
-        if (collision.gameObject.CompareTag("Player"))
+        if (other.gameObject.tag == "Player")
         {
-            // Move the player along with the object
-            Vector3 movement = objectRigidbody.velocity;
-            playerTransform.position += movement * Time.deltaTime;
+            playerIn = true;
+            player.transform.SetParent(movingPlatform.transform);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            playerIn = false;
+            player.transform.SetParent(null);
         }
     }
 }

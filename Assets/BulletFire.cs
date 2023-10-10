@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class BulletFire : MonoBehaviour
 {
-    public float propulsionForce = 2f;
+    public float propulsionForce = 0.001f;
 
-    private Rigidbody rb;
+    public Rigidbody rb;
 
     void Start()
     {
@@ -15,12 +15,12 @@ public class BulletFire : MonoBehaviour
 
     void Update()
     {
-        rb.AddForce(transform.forward * propulsionForce, ForceMode.Force);
+        rb.velocity = transform.up * propulsionForce;
     }
 
     void OnCollisionEnter(Collision collision)
     {
-       if(collision.gameObject.compareTag != "Player")
+       if(collision.gameObject.tag != "Player")
         {
             Destroy(this.gameObject);
         }

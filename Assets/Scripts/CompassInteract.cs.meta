@@ -3,7 +3,16 @@ guid: 0fa69ede933ff4c46bd9351535de8b83
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - spriteNull: {fileID: 21300000, guid: a4acddeedc5e6a044acbb045de9d487d, type: 3}
+  - puzzleChoice1: {fileID: 21300000, guid: 20538f31c0e7e094f8fed1654493793b, type: 3}
+  - puzzleChoice2: {fileID: 21300000, guid: 2678dc0fcba319440aaa640f960ddc80, type: 3}
+  - puzzleChoice3: {fileID: 21300000, guid: afa41b93fe9f25e4988dfd483f1f8600, type: 3}
+  - puzzleChoice4: {fileID: 21300000, guid: 1493d21c69d14e9409b10e70570c114b, type: 3}
+  - puzzleChoice5: {fileID: 21300000, guid: f4849193747afc1499c5578edd6196f5, type: 3}
+  - puzzleChoice6: {fileID: 21300000, guid: d365acf0bf3230c43b8cead9a90c0f18, type: 3}
+  - puzzleChoice7: {fileID: 21300000, guid: c1763fcf40ef0c44db713fce87efd967, type: 3}
+  - puzzleChoice8: {fileID: 21300000, guid: 938edde8d3f07be4199db0d6f0815423, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
