@@ -179,4 +179,16 @@ public class FirstPersonController : MonoBehaviour
 
         vertMove += Physics.gravity.y * Time.deltaTime;
     }
+
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if (characterController.isGrounded && hit.transform.tag == "Moving")
+        {
+            transform.SetParent(hit.transform);
+        }
+        else
+        {
+            transform.SetParent(null);
+        }
+    }
 }

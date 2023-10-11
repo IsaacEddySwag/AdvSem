@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public bool movmentNil = false;
 
     public float drinkFill = 0f;
+    public bool hasDrink = false;
 
     private void Awake()
     {
@@ -34,8 +35,18 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void fillDrink()
+    public void FillDrink()
     {
         drinkFill += 1;
+    }
+
+    public void HasDrink()
+    {
+        hasDrink = true;
+    }
+
+    public void UseDrink()
+    {
+        hasDrink = false;
     }
 }

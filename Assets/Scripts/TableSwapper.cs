@@ -58,7 +58,6 @@ public class TableSwapper : MonoBehaviour
 
         if(checkNum == getNumber)
         {
-            GameManager.Instance.fillDrink();
             NewOne();
         }
     }
@@ -114,7 +113,20 @@ public class TableSwapper : MonoBehaviour
     
     public void ChoiceSwapper(int number)
     {
-        checkNum = number;
+        if(GameManager.Instance.hasDrink)
+        {
+            checkNum = number;
+            if (checkNum == getNumber)
+            {
+                GameManager.Instance.FillDrink();
+                GameManager.Instance.UseDrink();
+                NewOne();
+            }
+            else
+            {
+
+            }
+        }
     }
 
     public void NewOne()
