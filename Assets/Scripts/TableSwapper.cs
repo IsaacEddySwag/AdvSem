@@ -22,14 +22,17 @@ public class TableSwapper : MonoBehaviour
    [SerializeField] private Vector3 original1Loc;
    [SerializeField] private Vector3 original2Loc;
 
-   public float moveSpeed = 0;
-   public float delayTime = 0;
+   public float moveSpeed = 0f;
+   public float delayTime = 0f;
+   public float delayTime2 = 0f;
 
    private Vector3 lastPos1;
    private Vector3 lastPos2;
 
    [SerializeField] private bool canStart = false;
    public bool puzzleEnd = false;
+
+    public GameObject endDoor;
    
    private void Awake()
    {
@@ -56,10 +59,7 @@ public class TableSwapper : MonoBehaviour
             }
         }
 
-        if(checkNum == getNumber)
-        {
-            NewOne();
-        }
+        CheckFinish();
     }
     
     public void ChooseTables()
@@ -113,11 +113,14 @@ public class TableSwapper : MonoBehaviour
     
     public void ChoiceSwapper(int number)
     {
+        Debug.Log("Hit");
         if(GameManager.Instance.hasDrink)
         {
+            Debug.Log("Hit2");
             checkNum = number;
             if (checkNum == getNumber)
             {
+                Debug.Log("Hit3");
                 GameManager.Instance.FillDrink();
                 GameManager.Instance.UseDrink();
                 NewOne();
@@ -132,6 +135,24 @@ public class TableSwapper : MonoBehaviour
     public void NewOne()
     {
         getNumber = Random.Range(1, 6);
+    }
+
+    public void CheckFinish()
+    {
+        if(GameManager.Instance.drinkFill == 5)
+        {
+            ChooseTables();
+        }
+        else if(GameManager.Instance.drinkFill >= 10)
+        {
+            delayTime = delayTime2;
+            moveSpeed *= 2;
+        }
+        else if(GameManager.Instance.drinkFill >= 15)
+        {
+            puzzleEnd = true;
+            endDoor.SetActive(false);
+        }
     }
 }
 

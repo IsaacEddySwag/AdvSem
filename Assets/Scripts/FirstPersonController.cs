@@ -94,7 +94,7 @@ public class FirstPersonController : MonoBehaviour
             moveSpeed = Mathf.Lerp(moveSpeed, maxSpeed, 6f * Time.deltaTime);
 
         }
-        else if (!sprintAction.IsPressed() && isSprinting == true)
+        else if (!sprintAction.IsPressed() && isSprinting == true && characterController.velocity.magnitude > 0)
         {
             FirstPersonCamera.m_Lens.FieldOfView = Mathf.Lerp(FirstPersonCamera.m_Lens.FieldOfView, basePov, 6f * Time.deltaTime);
             moveSpeed = Mathf.Lerp(moveSpeed, baseSpeed, 6f * Time.deltaTime);

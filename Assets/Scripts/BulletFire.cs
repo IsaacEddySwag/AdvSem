@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BulletFire : MonoBehaviour
 {
-    public float propulsionForce = 0.001f;
+    public float propulsionForce = -5f;
 
     public Rigidbody rb;
 
@@ -13,7 +13,13 @@ public class BulletFire : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
-    void FixedUpdate() { transform.Translate(transform.forward * propulsionForce * Time.deltaTime); }
+
+    void FixedUpdate() 
+    { 
+        transform.Translate(transform.forward * propulsionForce * Time.deltaTime);
+        var destroyTime = 120;
+        Destroy(gameObject, destroyTime);
+    }
 
     void OnCollisionEnter(Collision collision)
     {

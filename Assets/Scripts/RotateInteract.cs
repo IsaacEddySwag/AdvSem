@@ -28,8 +28,6 @@ public class RotateInteract : MonoBehaviour
                 rotateNow = false;
             }
         }
-
-
     }
 
     public void Rotate45()
