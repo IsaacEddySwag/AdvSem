@@ -87,7 +87,7 @@ public class FirstPersonController : MonoBehaviour
 
     private void ProcessMove()
     {
-        if (sprintAction.IsPressed())
+        if (sprintAction.IsPressed() && characterController.velocity.magnitude > 0)
         {
             FirstPersonCamera.m_Lens.FieldOfView = Mathf.Lerp(FirstPersonCamera.m_Lens.FieldOfView, maxPov, 6f * Time.deltaTime);
             isSprinting = true;
