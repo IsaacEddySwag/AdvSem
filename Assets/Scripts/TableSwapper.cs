@@ -31,6 +31,7 @@ public class TableSwapper : MonoBehaviour
 
    [SerializeField] private bool canStart = false;
    public bool puzzleEnd = false;
+   public bool hasBooze;
 
     public GameObject endDoor;
    
@@ -43,7 +44,9 @@ public class TableSwapper : MonoBehaviour
 
    void Update()
    {
-        if(canStart == true)
+        hasBooze = GameManager.Instance.hasDrink;
+
+        if (canStart == true)
         {
             lastPos1 = new Vector3(moveTable1.transform.position.x, moveTable1.transform.position.y, moveTable1.transform.position.z);
             lastPos2 = new Vector3(moveTable2.transform.position.x, moveTable2.transform.position.y, moveTable2.transform.position.z);
@@ -113,8 +116,7 @@ public class TableSwapper : MonoBehaviour
     
     public void ChoiceSwapper(int number)
     {
-        Debug.Log("Hit");
-        if(GameManager.Instance.hasDrink)
+        if(hasBooze)
         {
             Debug.Log("Hit2");
             checkNum = number;

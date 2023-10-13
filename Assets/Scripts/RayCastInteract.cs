@@ -35,7 +35,6 @@ public class RayCastInteract : MonoBehaviour
         //UIAnimationManager.Instance.ShowInteractPrompt(false);
         if (Physics.Raycast(interactionRay, out interactionHitInfo, distance) && interactionHitInfo.transform.tag == "Interactable")
         {
-            Debug.Log("AH");
             //UIAnimationManager.Instance.ShowInteractPrompt(true);
             if (interactInputPressed)
             {

@@ -5,17 +5,12 @@ using UnityEngine;
 public class SpawnBottle : MonoBehaviour
 {
     private bool hasDrink;
-    private bool canPickUp = true;
+    public bool canPickUp = true;
     [SerializeField] private GameObject drinkCollect;
 
     void Update()
     {
         hasDrink = GameManager.Instance.hasDrink;
-
-        if(drinkCollect.scene.IsValid())
-        {
-            canPickUp = true;
-        }
 
         if (!hasDrink && canPickUp == true)
         {
@@ -23,5 +18,10 @@ public class SpawnBottle : MonoBehaviour
             canPickUp = false;
         }
 
+    }
+
+    public void canPickUpActive()
+    {
+        canPickUp = true;
     }
 }
