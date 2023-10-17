@@ -25,6 +25,7 @@ public class MouseHover : MonoBehaviour
 
     private void OnMouseEnter()
     {
+        Debug.Log("Hover");
         text.text = hoverText;
         text.fontSize = hoverFontSize;
     }
