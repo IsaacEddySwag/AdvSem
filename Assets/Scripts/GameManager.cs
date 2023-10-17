@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,6 +10,10 @@ public class GameManager : MonoBehaviour
 
     public bool cameraNil = false;
     public bool movmentNil = false;
+
+    public int startIndex;
+    public int continueIndex;
+    public int settingsIndex;
 
     public float drinkFill = 0f;
     public bool hasDrink = false;
@@ -33,6 +38,27 @@ public class GameManager : MonoBehaviour
         {
             Instance = null;
         }
+    }
+
+    public void StartGame()
+    {
+        SceneManager.LoadScene(startIndex);
+    }
+
+    public void ContinueGame()
+    {
+        SceneManager.LoadScene(continueIndex);
+    }
+
+    public void Settings()
+    {
+        SceneManager.LoadScene(settingsIndex);
+    }
+
+    public void QuitGame()
+    {
+        Debug.Log("QuitGame");
+        Application.Quit();
     }
 
     public void FillDrink()

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d8840957700f7094e855dca9a0a97f4e
+guid: b9dfd86672e30e64e95e6748094b3f8a
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Forgotten
+  - Inkbrush
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
