@@ -4,11 +4,12 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-public class MouseHover : MonoBehaviour
+public class MouseHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    private TextMeshProUGUI text;
-    private Button button;
+    private TextMeshProUGUI TMPtext;
+    public Button button;
     private string originalText;
     private float originalFontSize;
 
@@ -17,23 +18,23 @@ public class MouseHover : MonoBehaviour
 
     void Start()
     {
-        text = GetComponent<TextMeshProUGUI>();
+        TMPtext = GetComponent<TextMeshProUGUI>();
         button = GetComponent<Button>();
-        originalText = text.text;
-        originalFontSize = text.fontSize;
+        originalText = TMPtext.text;
+        originalFontSize = TMPtext.fontSize;
     }
 
-    private void OnMouseEnter()
+    public void OnPointerEnter(PointerEventData eventData)
     {
         Debug.Log("Hover");
-        text.text = hoverText;
-        text.fontSize = hoverFontSize;
+        TMPtext.text = hoverText;
+        TMPtext.fontSize = hoverFontSize;
     }
 
-    private void OnMouseExit()
+    public void OnPointerExit(PointerEventData eventData)
     {
-        text.text = originalText;
-        text.fontSize = originalFontSize;
+        TMPtext.text = originalText;
+        TMPtext.fontSize = originalFontSize;
     }
 
     private void OnMouseDown()
