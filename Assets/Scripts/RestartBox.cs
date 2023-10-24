@@ -7,17 +7,23 @@ public class RestartBox : MonoBehaviour
 {
     private FirstPersonController controller;
     private GameObject player;
+    private CharacterController characterController;
     void Start()
     {
         player = GameObject.Find("Player");
         controller = GameObject.Find("Player").GetComponent<FirstPersonController>();
+        characterController = player.GetComponent<CharacterController>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.CompareTag("Player"))
+        Debug.Log("hit");
+        if(other.gameObject.tag == "Player")
         {
-            other.gameObject.transform.position = controller.respawnPos.position;
+            Debug.Log("hit2");
+            characterController.enabled = false;
+            other.transform.position = controller.respawnPos;
+            characterController.enabled = true;
         }
     }
 }

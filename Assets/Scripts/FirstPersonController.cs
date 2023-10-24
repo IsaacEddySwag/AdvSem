@@ -46,7 +46,7 @@ public class FirstPersonController : MonoBehaviour
 
     private Vector3 currentRotationAngle;
 
-    public Transform respawnPos;
+    public Vector3 respawnPos;
 
     private void OnEnable()
     {
@@ -76,7 +76,7 @@ public class FirstPersonController : MonoBehaviour
 
         FirstPersonCamera.m_CommonLens = true;
 
-        respawnPos = transform;
+        respawnPos = transform.position;
     }
 
     // Update is called once per frame
@@ -196,7 +196,7 @@ public class FirstPersonController : MonoBehaviour
         }
     }
 
-    public void SetRespawn(Transform newRespawnPos)
+    public void SetRespawn(Vector3 newRespawnPos)
     {
         respawnPos = newRespawnPos;
     }

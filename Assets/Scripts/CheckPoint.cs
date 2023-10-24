@@ -5,7 +5,7 @@ using UnityEngine;
 public class CheckPoint : MonoBehaviour
 {
     private GameObject player;
-    private Transform checkpointLocation;
+    private Vector3 checkpointLocation;
     private bool gotCheckPoint = false;
 
     void Start()
@@ -18,7 +18,7 @@ public class CheckPoint : MonoBehaviour
     {
         if(!gotCheckPoint && other.gameObject.CompareTag("Player")) 
         {
-            checkpointLocation = player.transform;
+            checkpointLocation = player.transform.position;
             player.GetComponent<FirstPersonController>().SetRespawn(checkpointLocation);
         }
     }
