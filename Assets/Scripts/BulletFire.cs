@@ -13,7 +13,6 @@ public class BulletFire : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
-
     void FixedUpdate() 
     { 
         transform.Translate(transform.forward * propulsionForce * Time.deltaTime);

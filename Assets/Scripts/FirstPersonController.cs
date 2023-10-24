@@ -12,8 +12,8 @@ using UnityEngine.InputSystem.LowLevel;
 
 public class FirstPersonController : MonoBehaviour
 {
-    public float moveSpeed = 4f;
-    public float maxSpeed = 8f;
+    public float moveSpeed = 5f;
+    public float maxSpeed = 10f;
     public float baseSpeed = 4f;
     public float maxJump = 1f;
     private float vertMove = 0f;
@@ -46,6 +46,8 @@ public class FirstPersonController : MonoBehaviour
 
     private Vector3 currentRotationAngle;
 
+    public Transform respawnPos;
+
     private void OnEnable()
     {
         //Enables the gameplay control scheme from an input action map
@@ -73,6 +75,8 @@ public class FirstPersonController : MonoBehaviour
         Cursor.visible = false;
 
         FirstPersonCamera.m_CommonLens = true;
+
+        respawnPos = transform;
     }
 
     // Update is called once per frame
@@ -94,7 +98,7 @@ public class FirstPersonController : MonoBehaviour
             moveSpeed = Mathf.Lerp(moveSpeed, maxSpeed, 6f * Time.deltaTime);
 
         }
-        else if (!sprintAction.IsPressed() && isSprinting == true && characterController.velocity.magnitude > 0)
+        else if (!sprintAction.IsPressed() && isSprinting == true)
         {
             FirstPersonCamera.m_Lens.FieldOfView = Mathf.Lerp(FirstPersonCamera.m_Lens.FieldOfView, basePov, 6f * Time.deltaTime);
             moveSpeed = Mathf.Lerp(moveSpeed, baseSpeed, 6f * Time.deltaTime);
@@ -190,5 +194,10 @@ public class FirstPersonController : MonoBehaviour
         {
             transform.SetParent(null);
         }
+    }
+
+    public void SetRespawn(Transform newRespawnPos)
+    {
+        respawnPos = newRespawnPos;
     }
 }
