@@ -40,6 +40,7 @@ public class FirstPersonController : MonoBehaviour
 
     public bool canMovePlayer;
     public bool canMoveCamera;
+    public bool isLanded = false;
 
     private Vector2 moveValue;
     private Vector2 rotateValue;
@@ -188,10 +189,12 @@ public class FirstPersonController : MonoBehaviour
     {
         if (characterController.isGrounded && hit.transform.tag == "Moving")
         {
+            isLanded = true;
             transform.SetParent(hit.transform);
         }
         else
         {
+            isLanded = false;
             transform.SetParent(null);
         }
     }
