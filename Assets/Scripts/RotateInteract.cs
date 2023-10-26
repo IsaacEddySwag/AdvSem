@@ -10,19 +10,20 @@ public class RotateInteract : MonoBehaviour
 
     private void Awake()
     {
-        rotationSpeed = 0.9f;
+        rotationSpeed = 0.0001f;
     }
 
     void Update()
     {
-        var step = Mathf.Pow(Time.deltaTime, rotationSpeed);
-        
+        //var step = Mathf.Pow(Time.deltaTime, rotationSpeed);
+        var step = rotationSpeed;
 
-        if(rotateNow)
+
+        if (rotateNow)
         {
             transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, step);
 
-            if (Quaternion.Dot(transform.rotation, targetRotation) > 0.99f) // Difference threshold - gusg21
+            if (Quaternion.Dot(transform.rotation, targetRotation) > 0.9f || Quaternion.Dot(transform.rotation, targetRotation) < -0.9f) // Difference threshold - gusg21
             {
                 transform.rotation = targetRotation;
                 rotateNow = false;
