@@ -10,7 +10,7 @@ public class MusicPlayer : MonoBehaviour
 {
     //These clips each hold one sound effect that can be called via a function.
     public AudioClip mainMenuMusic;
-    public AudioClip westernMusic;
+    public AudioClip level1Music;
 
     //Creates an audiomanager instance and and audiosurce
     private static MusicPlayer instance;
@@ -46,7 +46,7 @@ public class MusicPlayer : MonoBehaviour
             break;
             case 1:
                 instance.source.Stop();
-                instance.source.clip = instance.westernMusic;
+                instance.source.clip = instance.level1Music;
                 instance.source.Play();
             break;
         }

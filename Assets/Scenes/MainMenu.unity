@@ -679,7 +679,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainMenuMusic: {fileID: 0}
-  westernMusic: {fileID: 0}
+  level1Music: {fileID: 0}
 --- !u!114 &630791868
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -708,9 +708,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraNil: 0
   movmentNil: 0
-  startIndex: 0
-  continueIndex: 0
-  settingsIndex: 0
+  startIndex: 1
+  continueIndex: 1
+  settingsIndex: 1
   drinkFill: 0
   hasDrink: 0
 --- !u!4 &630791870

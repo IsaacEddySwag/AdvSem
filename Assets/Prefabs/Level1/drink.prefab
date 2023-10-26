@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 3124172114941490777}
   - component: {fileID: 5048373020705513982}
   - component: {fileID: 2392755767373417136}
+  - component: {fileID: 6551376877807897706}
+  - component: {fileID: 1036059232396321169}
   m_Layer: 0
   m_Name: drink
   m_TagString: Untagged
@@ -28,13 +30,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 536084248664444585}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.3301172, y: 0.44870567, z: 0.09234162, w: 0.82532346}
-  m_LocalPosition: {x: -55.427197, y: 34.21831, z: 252.4161}
-  m_LocalScale: {x: 0.41851085, y: 0.6700359, z: 0.41851085}
+  m_LocalRotation: {x: -0.016202895, y: 0.991617, z: -0.10161178, w: 0.07815483}
+  m_LocalPosition: {x: -55.427197, y: 34, z: 252.4161}
+  m_LocalScale: {x: 0.773701, y: 0.394497, z: -0.04761398}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: -38.886, y: 60.832, z: -10.648}
+  m_LocalEulerAnglesHint: {x: 11.478, y: 170.705, z: -2.808}
 --- !u!33 &4571772509529298273
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -120,3 +122,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7405103b30fa8f544ab9404b0f290bf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6551376877807897706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 536084248664444585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7f3b3423663eba4899e6f4cf470c929, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tables: {fileID: 0}
+  puzzleChoice: 0
+--- !u!114 &1036059232396321169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 536084248664444585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36456c8fcb0db1a479a6e6c6104d1ea7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bobbingSpeed: 1
+  bobbingAmount: 0.5
+  downDistance: 0.2

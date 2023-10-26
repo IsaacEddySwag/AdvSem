@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Events;
 using UnityEngine;
 
 public class TableSwapper : MonoBehaviour
@@ -33,6 +34,8 @@ public class TableSwapper : MonoBehaviour
    public bool puzzleEnd = false;
    public bool hasBooze;
 
+    public UnityEvent soundPlay;
+
     public GameObject endDoor;
    
    private void Awake()
@@ -45,6 +48,7 @@ public class TableSwapper : MonoBehaviour
    void Update()
    {
         hasBooze = GameManager.Instance.hasDrink;
+        moveSpeed = moveSpeed * Time.deltaTime;
 
         if (canStart == true)
         {
@@ -125,6 +129,7 @@ public class TableSwapper : MonoBehaviour
                 Debug.Log("Hit3");
                 GameManager.Instance.FillDrink();
                 GameManager.Instance.UseDrink();
+                soundPlay.Invoke();
                 NewOne();
             }
             else
