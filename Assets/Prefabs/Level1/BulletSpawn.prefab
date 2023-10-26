@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca52314cc8e07046ada5147fd2ea6b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delaySpeed: 12
+  delaySpeed: 8
   prefabBullet: {fileID: 3961559897821074653, guid: 156a59ab9bb31494f81e6dcf60f37bbb, type: 3}
   bulletSpawn: {fileID: 3399233915050370202}
 --- !u!1 &3879740975217655841
