@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class RestartBox : MonoBehaviour
 {
+    public float damage = 1f;
+
     private FirstPersonController controller;
     private GameObject player;
     private CharacterController characterController;
@@ -23,6 +25,7 @@ public class RestartBox : MonoBehaviour
             Debug.Log("hit2");
             characterController.enabled = false;
             other.transform.position = controller.respawnPos;
+            controller.TakeDamage(damage);
             characterController.enabled = true;
         }
     }

@@ -24,6 +24,9 @@ public class FirstPersonController : MonoBehaviour
     public float sensitivityX = 2.0f;
     public float sensitivityY = 2.0f;
 
+    public float maxHealth = 8f;
+    public float health;
+
     public InputActionAsset CharacterActionAsset;
 
     private InputAction moveAction;
@@ -78,6 +81,7 @@ public class FirstPersonController : MonoBehaviour
         FirstPersonCamera.m_CommonLens = true;
 
         respawnPos = transform.position;
+        health = maxHealth;
     }
 
     // Update is called once per frame
@@ -88,6 +92,11 @@ public class FirstPersonController : MonoBehaviour
 
         ProcessMove();
         ProcessCamera();
+
+        if(health <= 0)
+        {
+            health = 0;
+        }
     }
 
     private void ProcessMove()
@@ -202,5 +211,10 @@ public class FirstPersonController : MonoBehaviour
     public void SetRespawn(Vector3 newRespawnPos)
     {
         respawnPos = newRespawnPos;
+    }
+
+    public void TakeDamage(float damage)
+    {
+        health -= damage;
     }
 }
