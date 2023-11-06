@@ -14,13 +14,12 @@ public class FirstPersonController : MonoBehaviour
 {
     public float moveSpeed = 5f;
     public float maxSpeed = 10f;
-    public float baseSpeed = 4f;
-    public float maxJump = 1f;
+    public float baseSpeed = 5f;
+    public float maxJump = 2f;
     private float vertMove = 0f;
 
     public float basePov = 60;
     public float maxPov = 80;
-
     public float sensitivityX = 2.0f;
     public float sensitivityY = 2.0f;
 
@@ -120,11 +119,11 @@ public class FirstPersonController : MonoBehaviour
 
         if(FirstPersonCamera.m_Lens.FieldOfView >= maxPov - 0.1)
         {
-            FirstPersonCamera.m_Lens.FieldOfView = 80;
+            FirstPersonCamera.m_Lens.FieldOfView = maxPov;
         }
         else if(FirstPersonCamera.m_Lens.FieldOfView <= basePov + 0.1)
         {
-            FirstPersonCamera.m_Lens.FieldOfView = 60;
+            FirstPersonCamera.m_Lens.FieldOfView = basePov;
         }
 
         if(moveSpeed >= maxSpeed - 0.1)
@@ -191,7 +190,7 @@ public class FirstPersonController : MonoBehaviour
             isJumping = true;
         }
 
-        vertMove += Physics.gravity.y * Time.deltaTime;
+        vertMove += (Physics.gravity.y * 1.8f) * Time.deltaTime;
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
