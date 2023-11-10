@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
+using System.Runtime.CompilerServices;
+using UnityEngine.SearchService;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -16,11 +19,18 @@ public class DialogueManager : MonoBehaviour
 
     [SerializeField] private GameObject dialoguePanel;
     [SerializeField] private TextMeshProUGUI dialogueText;
+    [SerializeField] private TextMeshProUGUI displayName;
+
+    private Animator layoutAnimator;
 
     private Story currentStory;
     public bool dialogueIsPlaying { get; private set;}
 
     public bool AutoText = false;
+
+    private const string SPEAKER_TAG = "speaker";
+    private const string PORTRAIT_TAG = "portrait";
+    private const string LAYOUT_TAG = "layout";
 
     [Header("Choices UI")]
 
@@ -43,16 +53,6 @@ public class DialogueManager : MonoBehaviour
         instance = this;
 
         textContinue = CharacterActionAsset.FindActionMap("Gameplay").FindAction("Jump");
-
-        choicesText = new TextMeshProUGUI[choices.Length];
-
-        int index = 0;
-
-        foreach(GameObject choice in choices) 
-        {
-            choicesText[index] = choice.GetComponent<TextMeshProUGUI>();
-            index++;
-        }
     }
 
     public static DialogueManager GetInstance()
@@ -64,6 +64,18 @@ public class DialogueManager : MonoBehaviour
     {
         dialogueIsPlaying = false;
         dialoguePanel.SetActive(false);
+
+        choicesText = new TextMeshProUGUI[choices.Length];
+
+        int index = 0;
+
+        layoutAnimator = dialoguePanel.GetComponent<Animator>();
+
+        foreach (GameObject choice in choices)
+        {
+            choicesText[index] = choice.GetComponentInChildren<TextMeshProUGUI>();
+            index++;
+        }
     }
 
     private void Update()
@@ -92,7 +104,7 @@ public class DialogueManager : MonoBehaviour
     {
         dialogueIsPlaying = false;
         dialoguePanel.SetActive(false);
-        dialogueText.text = "";
+        dialogueText.text = null;
     }
 
     private void ContinueStory()
@@ -101,6 +113,7 @@ public class DialogueManager : MonoBehaviour
         {
             dialogueText.text = currentStory.Continue();
             DisplayChoices();
+            HandleTags(currentStory.currentTags);
         }
         else
         {
@@ -112,8 +125,10 @@ public class DialogueManager : MonoBehaviour
     {
         List<Choice> currentChoices = currentStory.currentChoices;
 
-        if(currentChoices.Count > choices.Length) { Debug.LogError("Too many choices than UI can support."); }
+        if(currentChoices.Count > choices.Length) { Debug.LogError("More choices than UI can support."); }
+
         int index = 0;
+
         foreach(Choice choice in currentChoices) 
         {
             choices[index].gameObject.SetActive(true);
@@ -121,9 +136,49 @@ public class DialogueManager : MonoBehaviour
             index++;
         }
 
-        for (int i = index; i < choices.Length; i++) { }
+        for (int i = index; i < choices.Length; i++)
         {
             choices[i].gameObject.SetActive(false);
+        }
+    }
+
+    private IEnumerator SelectFirstChoice()
+    {
+        EventSystem.current.SetSelectedGameObject(null);
+        yield return new WaitForEndOfFrame();
+        EventSystem.current.SetSelectedGameObject(choices[0].gameObject);
+    }
+
+    public void MakeChoice(int choiceIndex)
+    {
+        currentStory.ChooseChoiceIndex(choiceIndex);
+    }
+
+    private void HandleTags(List<string> currentTags)
+    {
+        foreach(string tag in currentTags) 
+        {
+            string[] splitTag = tag.Split(':');
+
+            if(splitTag.Length != 2) { Debug.LogError("Tag could not be appropriately"); }
+
+            string tagKey = splitTag[0].Trim();
+            string tagValue = splitTag[1].Trim();
+
+            switch(tagKey) 
+            {
+                case SPEAKER_TAG:
+                    displayName.text = tagValue;
+                    break;
+                case PORTRAIT_TAG:
+                    break;
+                case LAYOUT_TAG:
+                    layoutAnimator.Play(tagValue);
+                    break;
+                default:
+                    Debug.LogWarning("That tag couldn't be found. Try another.");
+                    break;
+            }
         }
     }
 }

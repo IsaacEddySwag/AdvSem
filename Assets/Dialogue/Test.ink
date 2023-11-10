@@ -1,27 +1,30 @@
-Nice Balls Bro
-Are my balls nice
-Help
-Help
-Help
-Help
+I'm hungry #speaker:Hungry Man #Layout:Left
+I want to eat
+Are you Hungry?
+I'm not hungry #speaker:Not Hungry Man #Layout:Right
+Ok. #speaker:Hungry Man #Layout:Left
+How about you?
 
-*They're great Bro
+*[Yep]
 ->Choice1
-* Mid balls lmao
+*[Nope]
 ->Choice2
-*Yikes those balls are not poggers
+*[I am food]
 ->Choice3
 
 === Choice1 ===
-Thanks bro. I appriciate that
+Nice.
+I think I'll eat you now
 
 -> END
 === Choice2 ===
-Bro what the hell, my balls ain't mid
+Nerd
+Do you want to eat?
+Yep #speaker:Not Hungry Man #Layout:Right
 
 -> END
 === Choice3 ===
-I'll fucking kill you
+I'm going to fucking eat you
 
 -> END
 
