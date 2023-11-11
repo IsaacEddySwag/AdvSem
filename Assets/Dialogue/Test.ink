@@ -1,8 +1,8 @@
-I'm hungry #speaker:Hungry Man #Layout:Left
+I'm hungry #speaker:Hungry Man #color:HungrySpeak #layout:Left
 I want to eat
 Are you Hungry?
-I'm not hungry #speaker:Not Hungry Man #Layout:Right
-Ok. #speaker:Hungry Man #Layout:Left
+I'm not hungry #speaker:Not Hungry Man #color:NotHungrySpeak #layout:Right
+Ok. #speaker:Hungry Man #color:HungrySpeak #layout:Left
 How about you?
 
 *[Yep]
@@ -20,7 +20,7 @@ I think I'll eat you now
 === Choice2 ===
 Nerd
 Do you want to eat?
-Yep #speaker:Not Hungry Man #Layout:Right
+Yep #speaker:Not Hungry Man #color:NotHungrySpeak #layout:Right
 
 -> END
 === Choice3 ===
