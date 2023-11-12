@@ -1787,12 +1787,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CharacterActionAsset: {fileID: -944628639613478452, guid: f4b7a0b5c953d2343b9434553b0dbb15, type: 3}
   typingSpeed: 0.02
+  LoadglobalsJSON: {fileID: 4900000, guid: 8dde342569b437248888df019715c4f6, type: 3}
   dialoguePanel: {fileID: 855514215}
   continueIcon: {fileID: 191105454}
   dialogueText: {fileID: 923946697}
   displayName: {fileID: 957150648}
   colorAnimator: {fileID: 709818833}
-  AutoText: 0
   choices:
   - {fileID: 1607366967}
   - {fileID: 1837177609}

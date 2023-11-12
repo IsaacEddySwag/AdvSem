@@ -5,8 +5,6 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.EventSystems;
-using System.Runtime.CompilerServices;
-using UnityEngine.SearchService;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -18,6 +16,9 @@ public class DialogueManager : MonoBehaviour
     [Header("Param")]
 
     [SerializeField] private float typingSpeed = 0.04f;
+
+    [Header("Globals Ink File")]
+    [SerializeField] private TextAsset LoadglobalsJSON;
 
     [Header("Dialogue UI")]
 
@@ -36,7 +37,9 @@ public class DialogueManager : MonoBehaviour
 
     private Coroutine displayLineCoroutine;
 
-    public bool AutoText = false;
+    private bool canSkip = false;
+    private bool submitSkip = false;
+    private bool isAddingTextTag = false;
 
     private const string SPEAKER_TAG = "speaker";
     private const string PORTRAIT_TAG = "color";
@@ -47,6 +50,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private GameObject[] choices;
     private TextMeshProUGUI[] choicesText;
 
+    private DialogueVariables dialogueVariables;
 
     private void OnEnable()
     {
@@ -63,6 +67,8 @@ public class DialogueManager : MonoBehaviour
         instance = this;
 
         textContinue = CharacterActionAsset.FindActionMap("Gameplay").FindAction("Jump");
+
+        dialogueVariables = new DialogueVariables(LoadglobalsJSON);
     }
 
     public static DialogueManager GetInstance()
@@ -90,6 +96,11 @@ public class DialogueManager : MonoBehaviour
 
     private void Update()
     {
+        if (textContinue.WasPressedThisFrame())
+        {
+            submitSkip = true;
+        }
+
         if (!dialogueIsPlaying)
         {
             return;
@@ -107,11 +118,15 @@ public class DialogueManager : MonoBehaviour
         dialogueIsPlaying = true;
         dialoguePanel.SetActive(true);
 
+        dialogueVariables.StartListening(currentStory);
+
         ContinueStory();
     }
 
     private void ExitDialogue()
     {
+        dialogueVariables.StopListening(currentStory);
+
         dialogueIsPlaying = false;
         dialoguePanel.SetActive(false);
         dialogueText.text = null;
@@ -139,24 +154,45 @@ public class DialogueManager : MonoBehaviour
         dialogueText.text = "";
         continueIcon.SetActive(false);
         canContinueNext = false;
+        submitSkip = false;
         HideChoices();
 
+        StartCoroutine(CanSkip());
 
         foreach (char letter in line.ToCharArray())
         {
-            if (textContinue.WasPressedThisFrame())
+            if (canSkip && submitSkip)
             {
+                submitSkip = false;
                 dialogueText.text = line;
                 break;
             }
-
-            dialogueText.text += letter;
-            yield return new WaitForSeconds(typingSpeed);
+            if(letter == '<' || isAddingTextTag)
+            {
+                isAddingTextTag = true;
+                dialogueText.text += letter;
+                if(letter == '>') 
+                {
+                    isAddingTextTag = false;
+                }
+            }
+            else
+            {
+                dialogueText.text += letter;
+                yield return new WaitForSeconds(typingSpeed);
+            }
         }
 
         continueIcon.SetActive(true);
         DisplayChoices();
         canContinueNext = true;
+    }
+
+    private IEnumerator CanSkip()
+    {
+        canSkip = false; //Making sure the variable is false.
+        yield return new WaitForSeconds(0.05f);
+        canSkip = true;
     }
 
     private void DisplayChoices()
@@ -198,6 +234,8 @@ public class DialogueManager : MonoBehaviour
     public void MakeChoice(int choiceIndex)
     {
         currentStory.ChooseChoiceIndex(choiceIndex);
+        textContinue.WasPressedThisFrame();
+        ContinueStory();
     }
 
     private void HandleTags(List<string> currentTags)
@@ -227,5 +265,16 @@ public class DialogueManager : MonoBehaviour
                     break;
             }
         }
+    }
+
+    public Ink.Runtime.Object GetVariableState(string variableName)
+    {
+        Ink.Runtime.Object variableValue = null;
+        dialogueVariables.variables.TryGetValue(variableName, out variableValue);
+        if(variableValue == null) 
+        {
+            Debug.LogWarning("Ink Variable was found to be null");
+        }
+        return variableValue;
     }
 }
