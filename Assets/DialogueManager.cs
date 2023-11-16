@@ -1,4 +1,4 @@
-using Ink.Runtime;
+ using Ink.Runtime;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -52,7 +52,14 @@ public class DialogueManager : MonoBehaviour
 
     private DialogueVariables dialogueVariables;
 
-    private void OnEnable()
+    [Header("Audio")]
+
+    [SerializeField] private AudioClip talkSound;
+    [SerializeField] private bool stopAudioSource;
+
+    private AudioSource audioSource;
+
+   private void OnEnable()
     {
         //Enables the gameplay control scheme from an input action map
         CharacterActionAsset.FindActionMap("Gameplay").Enable();
@@ -67,6 +74,8 @@ public class DialogueManager : MonoBehaviour
         instance = this;
 
         textContinue = CharacterActionAsset.FindActionMap("Gameplay").FindAction("Jump");
+
+        audioSource = this.gameObject.AddComponent<AudioSource>();
 
         dialogueVariables = new DialogueVariables(LoadglobalsJSON);
     }
@@ -179,6 +188,7 @@ public class DialogueManager : MonoBehaviour
             else
             {
                 dialogueText.text += letter;
+                
                 yield return new WaitForSeconds(typingSpeed);
             }
         }
@@ -186,6 +196,18 @@ public class DialogueManager : MonoBehaviour
         continueIcon.SetActive(true);
         DisplayChoices();
         canContinueNext = true;
+    }
+
+    private void PlayDialogueSound(int currentCount)
+    {
+        if(currentCount % 2 == 0)
+        {
+            if (stopAudioSource)
+            {
+                audioSource.Stop();
+            }
+            audioSource.PlayOneShot(talkSound);
+        }
     }
 
     private IEnumerator CanSkip()
