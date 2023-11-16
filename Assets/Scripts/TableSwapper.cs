@@ -158,7 +158,7 @@ public class TableSwapper : MonoBehaviour
         else if(GameManager.Instance.drinkFill >= 15)
         {
             puzzleEnd = true;
-            endDoor.SetActive(false);
+            Destroy(endDoor);
         }
     }
 }

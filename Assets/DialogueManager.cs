@@ -34,6 +34,8 @@ public class DialogueManager : MonoBehaviour
     private Story currentStory;
     public bool dialogueIsPlaying { get; private set; }
     private bool canContinueNext = false;
+    public bool autoText = false;
+    private bool Scene3D = false;
 
     private Coroutine displayLineCoroutine;
 
@@ -115,7 +117,8 @@ public class DialogueManager : MonoBehaviour
             return;
         }
 
-        if (canContinueNext && currentStory.currentChoices.Count == 0 && textContinue.WasPressedThisFrame())
+        AutoLine();
+        if (canContinueNext && currentStory.currentChoices.Count == 0 &&(textContinue.WasPressedThisFrame() || (autoText && Scene3D)))
         {
             ContinueStory();
         }
@@ -198,7 +201,13 @@ public class DialogueManager : MonoBehaviour
         canContinueNext = true;
     }
 
-    private void PlayDialogueSound(int currentCount)
+    private IEnumerator AutoLine()
+    {
+        yield return new WaitForSeconds(3f);
+        autoText = true;
+    }
+
+        private void PlayDialogueSound(int currentCount)
     {
         if(currentCount % 2 == 0)
         {
