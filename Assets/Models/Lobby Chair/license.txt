@@ -1,0 +1,11 @@
+Model Information:
+* title:	ArmChair
+* source:	https://sketchfab.com/3d-models/armchair-2cabd0ce491f4deea06c96edcd1eb8f7
+* author:	Kedar Phansikar (https://sketchfab.com/KedarPhansikar)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "ArmChair" (https://sketchfab.com/3d-models/armchair-2cabd0ce491f4deea06c96edcd1eb8f7) by Kedar Phansikar (https://sketchfab.com/KedarPhansikar) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
