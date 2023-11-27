@@ -15,9 +15,6 @@ public class GameManager : MonoBehaviour
     public int continueIndex;
     public int settingsIndex;
 
-    public float drinkFill = 0f;
-    public bool hasDrink = false;
-
     private void Awake()
     {
         if(Instance == null)
@@ -59,20 +56,5 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("QuitGame");
         Application.Quit();
-    }
-
-    public void FillDrink()
-    {
-        drinkFill += 1;
-    }
-
-    public void HasDrink()
-    {
-        hasDrink = true;
-    }
-
-    public void UseDrink()
-    {
-        hasDrink = false;
     }
 }

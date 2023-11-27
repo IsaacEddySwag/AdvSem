@@ -4,20 +4,25 @@ using UnityEngine;
 
 public class BulletFire : MonoBehaviour
 {
-    public float propulsionForce = -5f;
+    [SerializeField] private float propulsionForce = -5f;
+    [SerializeField] private float destroyTime = 60f;
 
     public Rigidbody rb;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+
+        if (destroyTime >= Time.deltaTime) 
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     void FixedUpdate() 
     { 
         transform.Translate(transform.forward * propulsionForce * Time.deltaTime);
-        var destroyTime = 120;
-        Destroy(gameObject, destroyTime);
+        
     }
 
     void OnCollisionEnter(Collision collision)

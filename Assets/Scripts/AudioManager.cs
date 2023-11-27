@@ -8,6 +8,8 @@ using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
+    public static AudioManager Instance;
+
     //These clips each hold one sound effect that can be called via a function.
     public AudioClip JingleComplete;
 

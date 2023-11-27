@@ -5,12 +5,14 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class RayCastInteract : MonoBehaviour
-{ 
-    public InputActionAsset characterInputActions;
-    public InputAction interactAction;
+{
+    [SerializeField] private InputActionAsset characterInputActions;
+    [SerializeField] private InputAction interactAction;
 
-    public CinemachineFreeLook playerCamera;
-    public float distance = 2f;
+    [SerializeField] private CinemachineFreeLook playerCamera;
+    [SerializeField] private float distance = 2f;
+
+    [SerializeField] private Animator reticleAnim;
 
     private void Awake()
     {
@@ -32,15 +34,18 @@ public class RayCastInteract : MonoBehaviour
         Ray interactionRay = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
         RaycastHit interactionHitInfo;
 
-        //UIAnimationManager.Instance.ShowInteractPrompt(false);
         if (Physics.Raycast(interactionRay, out interactionHitInfo, distance) && interactionHitInfo.transform.tag == "Interactable")
         {
-            //UIAnimationManager.Instance.ShowInteractPrompt(true);
+            reticleAnim.SetBool("interactable", true);
             if (interactInputPressed)
             {
                 interactionHitInfo.transform.SendMessage("onPlayerInteract", SendMessageOptions.DontRequireReceiver);
                 Debug.Log($"HIT: {interactionHitInfo.transform.name}");
             }
+        }
+        else
+        {
+            reticleAnim.SetBool("interactable", false);
         }
     }
 

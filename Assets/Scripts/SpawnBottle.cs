@@ -7,10 +7,11 @@ public class SpawnBottle : MonoBehaviour
     private bool hasDrink;
     public bool canPickUp = true;
     [SerializeField] private GameObject drinkCollect;
+    [SerializeField] private TableSwapper tableSwapper;
 
     void Update()
     {
-        hasDrink = GameManager.Instance.hasDrink;
+        hasDrink = tableSwapper.hasDrink;
 
         if (!hasDrink && canPickUp == true)
         {

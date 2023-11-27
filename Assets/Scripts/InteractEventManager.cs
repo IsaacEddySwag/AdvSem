@@ -11,4 +11,9 @@ public class InteractEventManager : MonoBehaviour
     {
         interactEvent.Invoke();
     }
+
+    public void DestroySelf()
+    {
+        Destroy(this.gameObject);
+    }
 }

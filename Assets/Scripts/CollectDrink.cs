@@ -6,7 +6,7 @@ public class CollectDrink : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        GameManager.Instance.HasDrink();
+        GameObject.Find("SwapperTable").GetComponent<TableSwapper>().hasDrink = true;
         Destroy(this.gameObject);
     }
 }
