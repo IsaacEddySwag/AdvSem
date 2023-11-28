@@ -13,7 +13,7 @@ public class MusicPlayer : MonoBehaviour
     public AudioClip level1Music;
 
     //Creates an audiomanager instance and and audiosurce
-    private static MusicPlayer instance;
+    public static MusicPlayer instance;
     private AudioSource source;
 
     public void Awake()
@@ -32,23 +32,17 @@ public class MusicPlayer : MonoBehaviour
         source = gameObject.GetComponent<AudioSource>();
     }
 
-    //This function loads in a different music track if it finds an object in the scene with one of the music tags. Each level will have a music tag that this function will use to determine which music to play.
-    public void MusicChange(int selection)
+    public void MainMenuBGM()
     {
-        source = gameObject.GetComponent<AudioSource>();
+        source.Stop();
+        source.clip = mainMenuMusic;
+        source.Play();
+    }
 
-        switch(selection)
-        {
-            case 0:
-                instance.source.Stop();
-                instance.source.clip = instance.mainMenuMusic;
-                instance.source.Play();
-            break;
-            case 1:
-                instance.source.Stop();
-                instance.source.clip = instance.level1Music;
-                instance.source.Play();
-            break;
-        }
+    public void LevelOneBGM()
+    {
+        source.Stop();
+        source.clip = level1Music;
+        source.Play();
     }
 }

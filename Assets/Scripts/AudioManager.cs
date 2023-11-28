@@ -8,15 +8,15 @@ using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
-    public static AudioManager Instance;
-
     //These clips each hold one sound effect that can be called via a function.
-    public AudioClip JingleComplete;
+    [SerializeField] private AudioClip jingleComplete;
+    [SerializeField] private AudioClip reticleOn;
 
     //Creates an audiomanager instance and and audiosurce
-    public AudioSource jingleSource;
+    [SerializeField] private AudioSource jingleSource;
+    [SerializeField] private AudioSource reticleSource;
 
-    private static AudioManager instance;
+    public static AudioManager instance;
 
     public void Awake()
     {
@@ -38,9 +38,19 @@ public class AudioManager : MonoBehaviour
     {
          if (instance.jingleSource != null)
          {
-              instance.jingleSource.Stop();
-              instance.jingleSource.clip = instance.JingleComplete;
-              instance.jingleSource.Play();
+              jingleSource.Stop();
+              jingleSource.clip = jingleComplete;
+              jingleSource.Play();
          }
+    }
+
+    public void ReticleSFX()
+    {
+        if (reticleSource != null)
+        {
+            reticleSource.Stop();
+            reticleSource.clip = reticleOn;
+            reticleSource.Play();
+        }
     }
 }
