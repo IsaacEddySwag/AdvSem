@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2063347411606891330}
   - component: {fileID: 5617528076121469288}
   - component: {fileID: 4247363333145821333}
+  - component: {fileID: 7229059273679926416}
   m_Layer: 0
   m_Name: TellerDesk_DeskWood_0
   m_TagString: Untagged
@@ -83,6 +84,28 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &7229059273679926416
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 442724616367205838}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 31e714060e992634dbb9881fdc4b5f3d, type: 2}
 --- !u!1 &1307000659112143162
 GameObject:
   m_ObjectHideFlags: 0

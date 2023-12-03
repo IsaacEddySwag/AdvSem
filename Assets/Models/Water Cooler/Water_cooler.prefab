@@ -597,6 +597,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7733388179087779721}
+  - component: {fileID: 6679206491419038830}
   m_Layer: 0
   m_Name: Collada visual scene group
   m_TagString: Untagged
@@ -620,6 +621,27 @@ Transform:
   - {fileID: 5742412069570974730}
   m_Father: {fileID: 1976180641416355799}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &6679206491419038830
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5141556982363049689}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 30.787209, y: 138.9905, z: 30.625332}
+  m_Center: {x: 0.08907437, y: 68.995255, z: 0.21091457}
 --- !u!1 &5198053480832460482
 GameObject:
   m_ObjectHideFlags: 0
