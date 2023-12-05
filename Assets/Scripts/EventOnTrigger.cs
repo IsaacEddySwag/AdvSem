@@ -5,13 +5,22 @@ using UnityEngine.Events;
 
 public class EventOnTrigger: MonoBehaviour
 {
-    public UnityEvent triggerEvent;
+    public UnityEvent triggerEventIn;
+    public UnityEvent triggerEventOut;
 
     public void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "Player")
         {
-            triggerEvent.Invoke();
+            triggerEventIn.Invoke();
+        }
+    }
+
+    public void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            triggerEventOut.Invoke();
         }
     }
 }

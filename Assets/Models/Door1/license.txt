@@ -1,0 +1,11 @@
+Model Information:
+* title:	Stylized Metal Doors
+* source:	https://sketchfab.com/3d-models/stylized-metal-doors-ee21d5b6985b45a0826c57f1fa038f0c
+* author:	cat is activated (https://sketchfab.com/catisactivated)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Stylized Metal Doors" (https://sketchfab.com/3d-models/stylized-metal-doors-ee21d5b6985b45a0826c57f1fa038f0c) by cat is activated (https://sketchfab.com/catisactivated) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
