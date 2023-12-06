@@ -15,11 +15,11 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip doorLocked;
     [SerializeField] private AudioClip tableBell;
     [SerializeField] private AudioClip pickUp;
+    [SerializeField] private AudioClip doorOpen;
+    [SerializeField] private AudioClip doorClose;
 
     //Creates an audiomanager instance and and audiosurce
-    [Header("Audio Sources")]
-    [SerializeField] private AudioSource jingleSource;
-    [SerializeField] private AudioSource reticleSource;
+    [Header("Audio Source")]
     [SerializeField] private AudioSource sfxSource;
 
     public static AudioManager instance;
@@ -42,21 +42,17 @@ public class AudioManager : MonoBehaviour
 
     public void CompleteJingle()
     {
-         if (instance.jingleSource != null)
+         if (sfxSource != null)
          {
-              jingleSource.Stop();
-              jingleSource.clip = jingleComplete;
-              jingleSource.Play();
+              sfxSource.PlayOneShot(jingleComplete);
          }
     }
 
     public void ReticleSFX()
     {
-        if (reticleSource != null)
+        if (sfxSource != null)
         {
-            reticleSource.Stop();
-            reticleSource.clip = reticleOn;
-            reticleSource.Play();
+            sfxSource.PlayOneShot(reticleOn);
         }
     }
 
@@ -64,9 +60,7 @@ public class AudioManager : MonoBehaviour
     {
         if (sfxSource != null)
         {
-            sfxSource.Stop();
-            sfxSource.clip = doorLocked;
-            sfxSource.Play();
+            sfxSource.PlayOneShot(doorLocked);
         }
     }
 
@@ -74,9 +68,7 @@ public class AudioManager : MonoBehaviour
     {
         if (sfxSource != null)
         {
-            sfxSource.Stop();
-            sfxSource.clip = tableBell;
-            sfxSource.Play();
+            sfxSource.PlayOneShot(tableBell);
         }
     }
 
@@ -84,9 +76,23 @@ public class AudioManager : MonoBehaviour
     {
         if (sfxSource != null)
         {
-            sfxSource.Stop();
-            sfxSource.clip = pickUp;
-            sfxSource.Play();
+            sfxSource.PlayOneShot(pickUp);
+        }
+    }
+
+    public void DoorOpenSFX()
+    {
+        if (sfxSource != null)
+        {
+            sfxSource.PlayOneShot(doorOpen, 0.8f);
+        }
+    }
+
+    public void DoorExitSFX()
+    {
+        if (sfxSource != null)
+        {
+            sfxSource.PlayOneShot(doorClose, 0.8f);
         }
     }
 }

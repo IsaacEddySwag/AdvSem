@@ -14,16 +14,16 @@ public class Door1Open : MonoBehaviour
     {
         if(player.GetComponent<PlayerInventory>().card1)
         {
-            Debug.Log("1");
             if(!isOpen)
             {
                 animator.SetBool("swingOpen", true);
+                AudioManager.instance.DoorOpenSFX();
                 isOpen = true;
-                Debug.Log("2");
             }
             else if(isOpen)
             {
                 animator.SetBool("swingOpen", false);
+                AudioManager.instance.DoorExitSFX();
                 isOpen = false;
             }
         }

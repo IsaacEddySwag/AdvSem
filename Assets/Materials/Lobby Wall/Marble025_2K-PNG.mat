@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Marble025_2K-PNG
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
-  m_Parent: {fileID: 2100000, guid: bec63062dbf328f4ca1bd8f694a9104b, type: 2}
+  m_Parent: {fileID: 2100000, guid: 0987a1e40c9b296418a2497f04229803, type: 2}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - _METALLICGLOSSMAP
