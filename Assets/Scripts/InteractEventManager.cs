@@ -16,4 +16,9 @@ public class InteractEventManager : MonoBehaviour
     {
         Destroy(this.gameObject);
     }
+
+    public void PickUp()
+    {
+        AudioManager.instance.PickUpSFX();
+    }
 }

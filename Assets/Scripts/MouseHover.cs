@@ -26,6 +26,7 @@ public class MouseHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        AudioManager.instance.ReticleSFX();
         Debug.Log("Hover");
         TMPtext.text = hoverText;
         TMPtext.fontSize = hoverFontSize;

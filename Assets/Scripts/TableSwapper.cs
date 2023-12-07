@@ -17,8 +17,10 @@ public class TableSwapper : MonoBehaviour
    [SerializeField] private GameObject table4Object;
    [SerializeField] private GameObject table5Object;
 
+    [SerializeField] private GameObject keyCard2;
 
-   public float drinkFill = 0f;
+
+    public float drinkFill = 0f;
    public bool hasDrink = false;
 
    [SerializeField] bool puzzleEnd = false;
@@ -122,7 +124,7 @@ public class TableSwapper : MonoBehaviour
         else if(drinkFill == 15)
         {
             puzzleEnd = true;
-            Destroy(endDoor);
+            keyCard2.SetActive(true);
         }
     }
 }
