@@ -16,7 +16,7 @@ public class RotateInteract : MonoBehaviour
     void Update()
     {
         //var step = Mathf.Pow(Time.deltaTime, rotationSpeed);
-        var step = rotationSpeed;
+        var step = rotationSpeed * Time.deltaTime;
 
 
         if (rotateNow)

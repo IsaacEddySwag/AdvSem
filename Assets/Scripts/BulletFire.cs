@@ -5,7 +5,7 @@ using UnityEngine;
 public class BulletFire : MonoBehaviour
 {
     [SerializeField] private float propulsionForce = -5f;
-    [SerializeField] private float destroyTime = 60f;
+    [SerializeField] private float destroyTime = 30f;
 
     public Rigidbody rb;
 

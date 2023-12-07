@@ -15,6 +15,8 @@ public class ChairPuzzler : MonoBehaviour
     public UnityEvent incorrectGuess;
     private bool victory = false;
     private bool gotIt = false;
+    private float speed = 1f;
+
     void Start()
     {
         quat = Quaternion.Euler(transform.rotation.x, turnAmount, transform.rotation.z);
@@ -32,6 +34,7 @@ public class ChairPuzzler : MonoBehaviour
 
         if(victory)
         {
+            speed = speed * Time.deltaTime;
             transform.position = Vector3.MoveTowards(transform.position, movePos, 0.5f);
         }
     }
