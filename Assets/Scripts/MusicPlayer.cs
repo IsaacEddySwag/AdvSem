@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -34,15 +35,27 @@ public class MusicPlayer : MonoBehaviour
 
     public void MainMenuBGM()
     {
-        source.Stop();
-        source.clip = mainMenuMusic;
-        source.Play();
+        if(source != null) 
+        { 
+            if(source.clip != mainMenuMusic)
+            {
+                source.Stop();
+                source.clip = mainMenuMusic;
+                source.Play();
+            }
+        }
     }
 
     public void LevelOneBGM()
     {
-        source.Stop();
-        source.clip = level1Music;
-        source.Play();
+        if (source != null)
+        {
+            if (source.clip != level1Music)
+            {
+                source.Stop();
+                source.clip = level1Music;
+                source.Play();
+            }
+        }
     }
 }

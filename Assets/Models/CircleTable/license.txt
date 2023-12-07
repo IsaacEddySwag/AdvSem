@@ -1,0 +1,11 @@
+Model Information:
+* title:	Conference Table - rectangular 6m
+* source:	https://sketchfab.com/3d-models/conference-table-rectangular-6m-1ba845e95a964809a9437c2a92ac59ab
+* author:	MozillaHubs (https://sketchfab.com/mozillareality)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Conference Table - rectangular 6m" (https://sketchfab.com/3d-models/conference-table-rectangular-6m-1ba845e95a964809a9437c2a92ac59ab) by MozillaHubs (https://sketchfab.com/mozillareality) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

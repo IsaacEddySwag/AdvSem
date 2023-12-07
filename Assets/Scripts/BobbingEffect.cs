@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class BobbingEffect : MonoBehaviour
 {
-    public float bobbingSpeed = 1f;  // Speed of the bobbing effect
-    public float bobbingAmount = 0.5f; // Amount of bobbing effect
+    public float bobbingSpeed = 0.8f;  // Speed of the bobbing effect
+    public float bobbingAmount = 0.3f; // Amount of bobbing effect
     public float downDistance = 0.2f; // Distance the platform moves down when the player lands on it
     float newY;
 
