@@ -1916,6 +1916,7 @@ MonoBehaviour:
   pickUp: {fileID: 8300000, guid: c7935bc11e8896f46a23d72060943c4c, type: 3}
   doorOpen: {fileID: 8300000, guid: 27a1a5026a323fb42841bd21f4752a2b, type: 3}
   doorClose: {fileID: 8300000, guid: fa6681da9ed78964ea14fd7928055d20, type: 3}
+  enterGame: {fileID: 8300000, guid: c1fd518014c69b24499744abd5105a4c, type: 3}
   sfxSource: {fileID: 1495116864}
 --- !u!114 &1495116867
 MonoBehaviour:
@@ -2708,6 +2709,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1495116866}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: StartGameSFX
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 797550073}
         m_TargetAssemblyTypeName: SceneSwitcher, Assembly-CSharp
         m_MethodName: StartGame

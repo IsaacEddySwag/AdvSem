@@ -41,6 +41,5 @@ public class MouseHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     private void OnMouseDown()
     {
         button.onClick.Invoke();
-
     }
 }

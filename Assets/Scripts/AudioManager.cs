@@ -17,6 +17,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip pickUp;
     [SerializeField] private AudioClip doorOpen;
     [SerializeField] private AudioClip doorClose;
+    [SerializeField] private AudioClip enterGame;
 
     //Creates an audiomanager instance and and audiosurce
     [Header("Audio Source")]
@@ -93,6 +94,14 @@ public class AudioManager : MonoBehaviour
         if (sfxSource != null)
         {
             sfxSource.PlayOneShot(doorClose, 0.8f);
+        }
+    }
+
+    public void StartGameSFX()
+    {
+        if (sfxSource != null)
+        {
+            sfxSource.PlayOneShot(enterGame);
         }
     }
 }
