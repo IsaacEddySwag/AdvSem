@@ -1,1 +1,2 @@
-Howdy! My name is Norma Nichols, nice to meet y'all. #speaker:Norma #layout:right
+Howdy! #speaker:Norma #layout:right
+My name is Norma Nichols, nice to meet you guys. 

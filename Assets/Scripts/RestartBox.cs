@@ -22,7 +22,6 @@ public class RestartBox : MonoBehaviour
         Debug.Log("hit");
         if(other.gameObject.tag == "Player")
         {
-            Debug.Log("hit2");
             characterController.enabled = false;
             other.transform.position = controller.respawnPos;
             controller.TakeDamage(damage);
