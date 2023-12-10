@@ -12,19 +12,22 @@ using UnityEngine.InputSystem.LowLevel;
 
 public class FirstPersonController : MonoBehaviour
 {
-    public float moveSpeed = 5f;
-    public float maxSpeed = 10f;
-    public float baseSpeed = 5f;
-    public float maxJump = 2f;
+    [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private float maxSpeed = 10f;
+    [SerializeField] private float baseSpeed = 5f;
+    [SerializeField] private float maxJump = 2f;
     private float vertMove = 0f;
 
-    public float basePov = 60;
-    public float maxPov = 80;
-    public float sensitivityX = 2.0f;
-    public float sensitivityY = 2.0f;
+    [SerializeField] private float basePov = 60;
+    [SerializeField] private float maxPov = 80;
+    [SerializeField] private float sensitivityX = 2.0f;
+    [SerializeField] private float sensitivityY = 2.0f;
 
-    public float maxHealth = 8f;
-    public float health;
+    [SerializeField] private float maxHealth = 8f;
+    [SerializeField] private float health;
+
+    [SerializeField] private float slopeForce;
+    [SerializeField] private float slopeForceRayLength;
 
     public InputActionAsset CharacterActionAsset;
 
@@ -146,8 +149,32 @@ public class FirstPersonController : MonoBehaviour
 
             moveDirection.y = vertMove * Time.deltaTime;
 
+            if((moveDirection.y != 0 || moveDirection.x != 0) && OnSlope() && !isJumping) 
+            { 
+                characterController.Move(Vector3.down * characterController.height / 2 * slopeForce * Time.deltaTime);
+            }
+
             characterController.Move(moveDirection);
         }
+    }
+
+    private bool OnSlope()
+    {
+        if(isJumping) 
+        {
+            return false;
+        }
+
+        RaycastHit hit;
+
+        if(Physics.Raycast(transform.position, Vector3.down, out hit, characterController.height / 2 * slopeForceRayLength))
+        {
+            if(hit.normal != Vector3.zero)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     private void ProcessCamera()
