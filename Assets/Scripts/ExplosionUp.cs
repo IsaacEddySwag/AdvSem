@@ -5,13 +5,17 @@ public class ExplosionUp : MonoBehaviour
     public float upwardForce = 2f;  
     public float propulsionDuration = 2f;
     public float delayDuration = 4f;
+    private bool shaken = false;
 
     private Rigidbody rb;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        PropelUpwards();
+        if(shaken)
+        {
+            PropelUpwards();
+        }
     }
 
     void PropelUpwards()
@@ -26,6 +30,11 @@ public class ExplosionUp : MonoBehaviour
     {
         rb.useGravity = true;
         Invoke("PropelUpwards", delayDuration);
+    }
+
+    public void ShakeIt()
+    {
+        shaken = true;
     }
 }
 
