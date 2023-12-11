@@ -4918,7 +4918,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -6.9924154, y: 102.975, z: 15.625484}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.6981251, y: 0.7123999, z: 0.6981251}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1846846651780013968}
@@ -4954,7 +4954,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: -0, w: -1}
   m_LocalPosition: {x: 0, y: 0, z: -0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.2475, y: 1.2475, z: 1.2475}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6641197460638455909}
@@ -5059,8 +5059,8 @@ Transform:
   m_GameObject: {fileID: 6507857765747367675}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.8769989, z: -0.0030107498}
-  m_LocalScale: {x: 1, y: 0.20035, z: 1}
+  m_LocalPosition: {x: 0.036, y: 2.573, z: -0.0030107498}
+  m_LocalScale: {x: 1.3182, y: 0.26410136, z: 1.3182}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6981291289169854700}
@@ -5102,7 +5102,7 @@ MonoBehaviour:
   upwardForce: 10
   propulsionDuration: 1
   delayDuration: 4
-  launchSoda: {fileID: 1867775456365004542}
+  launchSoda: {fileID: 2310235702970473064}
 --- !u!54 &3574558204190744257
 Rigidbody:
   m_ObjectHideFlags: 0

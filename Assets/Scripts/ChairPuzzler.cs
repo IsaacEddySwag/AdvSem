@@ -40,7 +40,7 @@ public class ChairPuzzler : MonoBehaviour
         if(victory)
         {
             speed = speed * Time.deltaTime;
-            transform.position = Vector3.MoveTowards(transform.position, movePos, 0.5f);
+            transform.position = Vector3.MoveTowards(transform.position, movePos, 0.5f * Time.deltaTime);
         }
     }
 
