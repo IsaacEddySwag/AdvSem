@@ -6,11 +6,11 @@ using UnityEngine.Events;
 
 public class ChairPuzzler : MonoBehaviour
 {
-    private quaternion quat;
+    [SerializeField] private int turned;
     private Vector3 movePos;
     public TurnPuzzler table;
-    public float turnAmount;
     public float moveAmount;
+    [SerializeField] private int correctTurn;
     public UnityEvent correctGuess;
     public UnityEvent incorrectGuess;
     private bool victory = false;
@@ -19,14 +19,19 @@ public class ChairPuzzler : MonoBehaviour
 
     void Start()
     {
-        quat = Quaternion.Euler(transform.rotation.x, turnAmount, transform.rotation.z);
+        turned = 0;
         movePos = new Vector3(transform.position.x, transform.position.y + moveAmount, transform.position.z);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(transform.rotation == quat && !gotIt)
+        if(turned >= 8)
+        {
+            turned = 0;
+        }
+
+        if(turned == correctTurn && !gotIt)
         {
             correctGuess.Invoke();
             gotIt = true;
@@ -43,4 +48,10 @@ public class ChairPuzzler : MonoBehaviour
     {
         victory = true;
     }
+
+    public void Turning()
+    {
+        turned++;
+    }
+
 }
