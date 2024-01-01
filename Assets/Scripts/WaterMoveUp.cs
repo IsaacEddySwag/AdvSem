@@ -17,7 +17,7 @@ public class WaterMoveUp : MonoBehaviour
     {
         if(Time1)
         {
-            transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, floor1.transform.position.y, transform.position.z), 0.4f * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, floor1.transform.position.y, transform.position.z), 0.6f * Time.deltaTime);
             if(transform.position == new Vector3(transform.position.x, floor1.transform.position.y, transform.position.z))
             {
                 Time1 = false;
@@ -26,7 +26,7 @@ public class WaterMoveUp : MonoBehaviour
 
         if (Time2)
         {
-            transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, floor2.transform.position.y, transform.position.z), 0.4f * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, floor2.transform.position.y, transform.position.z), 0.6f * Time.deltaTime);
             if (transform.position == new Vector3(transform.position.x, floor2.transform.position.y, transform.position.z))
             {
                 Time2 = false;

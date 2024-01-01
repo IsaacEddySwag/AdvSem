@@ -8,7 +8,7 @@ public class SceneSwitcher : MonoBehaviour
 {
     public int startIndex;
     public int continueIndex;
-    public int settingsIndex;
+    public int mainIndex;
 
     public void StartGame()
     {
@@ -20,9 +20,9 @@ public class SceneSwitcher : MonoBehaviour
         SceneManager.LoadScene(continueIndex);
     }
 
-    public void Settings()
+    public void MainMenu()
     {
-        SceneManager.LoadScene(settingsIndex);
+        SceneManager.LoadScene(mainIndex);
     }
 
     public void QuitGame()

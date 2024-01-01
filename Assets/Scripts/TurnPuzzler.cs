@@ -12,6 +12,7 @@ public class TurnPuzzler : MonoBehaviour
     public UnityEvent win;
     private bool victory = false;
     private float speed = 1f;
+    public float completeAmount;
     void Start()
     {
         correct = 0f;
@@ -20,7 +21,7 @@ public class TurnPuzzler : MonoBehaviour
 
     void Update()
     {
-        if(correct >= 6f) 
+        if(correct >= completeAmount) 
         {
             Win();
         }
@@ -28,7 +29,7 @@ public class TurnPuzzler : MonoBehaviour
         if (victory)
         {
             speed = speed * Time.deltaTime;
-            transform.position = Vector3.MoveTowards(transform.position, movePos, speed);
+            transform.position = Vector3.MoveTowards(transform.position, movePos, 0.5f * Time.deltaTime);
         }
     }
 

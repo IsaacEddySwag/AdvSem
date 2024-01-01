@@ -12,6 +12,7 @@ public class MusicPlayer : MonoBehaviour
     //These clips each hold one sound effect that can be called via a function.
     public AudioClip mainMenuMusic;
     public AudioClip level1Music;
+    public AudioClip endOfLevel;
 
     //Creates an audiomanager instance and and audiosurce
     public static MusicPlayer instance;
@@ -22,12 +23,12 @@ public class MusicPlayer : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(this);
+            //DontDestroyOnLoad(this);
         }
         else
         {
-            Destroy(this);
-            return;
+            //Destroy(this);
+            //return;
         }
 
         source = gameObject.GetComponent<AudioSource>();
@@ -54,6 +55,19 @@ public class MusicPlayer : MonoBehaviour
             {
                 source.Stop();
                 source.clip = level1Music;
+                source.Play();
+            }
+        }
+    }
+
+    public void EndOfLevelBGM()
+    {
+        if (source != null)
+        {
+            if (source.clip != endOfLevel)
+            {
+                source.Stop();
+                source.clip = endOfLevel;
                 source.Play();
             }
         }

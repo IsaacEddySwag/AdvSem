@@ -5,9 +5,19 @@ using UnityEngine;
 public class VendingMachine : MonoBehaviour
 {
     [SerializeField] private Animator anim;
+    private bool shaked = false;
 
-    public void shakeMachine()
+    public void ShakeMachine()
     {
-        anim.SetBool("shake", true);
+        if(!shaked)
+        {
+            anim.SetBool("shake", true);
+            shaked = true;
+        }
+    }
+
+    public void StopMachine()
+    {
+        anim.SetBool("shake", false);
     }
 }

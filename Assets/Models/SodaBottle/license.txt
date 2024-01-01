@@ -1,0 +1,11 @@
+Model Information:
+* title:	Cel Shaded Soda Cans
+* source:	https://sketchfab.com/3d-models/cel-shaded-soda-cans-9597bac9cfa946feb1e7fa2c41a3ebf9
+* author:	bicho.salem (https://sketchfab.com/bicho.salem)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Cel Shaded Soda Cans" (https://sketchfab.com/3d-models/cel-shaded-soda-cans-9597bac9cfa946feb1e7fa2c41a3ebf9) by bicho.salem (https://sketchfab.com/bicho.salem) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

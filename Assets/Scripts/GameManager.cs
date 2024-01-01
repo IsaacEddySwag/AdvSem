@@ -12,15 +12,16 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(this.gameObject);
+            //DontDestroyOnLoad(this.gameObject);
         }
         else if (Instance != this)
         {
-            Debug.LogError("More than 1 instance of a manager", this);
-            Destroy(this.gameObject);
+            //Debug.LogError("More than 1 instance of a manager", this);
+            //Destroy(this.gameObject);
         }
     }
 
